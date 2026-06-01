@@ -13,7 +13,13 @@
 <body>
     <header>
         <div class="logo no-select">BEEFSTEAK <span>ZADAR</span></div>
-        <nav>
+        
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="nav-toggle-label" aria-label="Otvori izbornik">
+            <span></span>
+        </label>
+        
+        <nav aria-label="Glavna navigacija">
             <ul>
                 <li><a href="../index.html" class="no-select">Početna</a></li>
                 <li><a href="jelovnik.html" class="no-select">Jelovnik</a></li>
@@ -78,5 +84,7 @@
             <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px;"><img src="../assets/img/instagram.svg" alt="Instagram" width="24" height="24"></a>
         </div>
     </footer>
+
+    <script type="module" src="../js/main.js"></script>
 </body>
 </html>

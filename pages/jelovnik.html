@@ -9,23 +9,20 @@
     <link rel="stylesheet" href="../styles/layout.css">
     <link rel="stylesheet" href="../styles/components.css">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
-
-    <style>
-        .menu-img {
-            width: 80px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-    </style>
 </head>
 <body>
 
 <header>
     <div class="logo no-select">BEEFSTEAK <span>ZADAR</span></div>
-    <nav>
+    
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-toggle-label" aria-label="Otvori izbornik">
+        <span></span>
+    </label>
+
+    <nav aria-label="Glavna navigacija">
         <ul>
-            <li><a href="../index.html" class="no-select"> Početna</a></li>
+            <li><a href="../index.html" class="no-select">Početna</a></li>
             <li><a href="jelovnik.html" class="active no-select">Jelovnik</a></li>
             <li><a href="o-nama.html" class="no-select">O nama</a></li>
             <li><a href="kontakt.html" class="no-select">Kontakt</a></li>
@@ -34,221 +31,51 @@
 </header>
 
 <main class="container">
-    <h1 class="page-title" style="display: flex; align-items: center; justify-content: center;">
-        <img src="../assets/img/menu.png" width="69" style="margin-right: 15px;">
-        Naš Menu & Cjenik
-    </h1>
+    <div id="view-list">
+        <h1 class="page-title" style="display: flex; align-items: center; justify-content: center;">
+            <img src="../assets/img/menu.png" width="69" style="margin-right: 15px;" alt="Menu">
+            Naš Menu & Cjenik
+        </h1>
 
-    <div class="jelovnik-grid-layout">
+        <div class="filter-container">
+            <div class="filter-bar">
+                <button class="active" data-filter="all">Sve</button>
+                <button data-filter="favorites" style="border-color: #d32f2f; color: #d32f2f;">★ Moji Favoriti</button>
+                <button data-filter="predjela">Predjela & Juhe</button>
+                <button data-filter="odresci">Vrhunski Odresci</button>
+                <button data-filter="glavna">Glavna Jela</button>
+                <button data-filter="salate">Salate</button>
+                <button data-filter="prilozi">Prilozi</button>
+                <button data-filter="pica">Pića</button>
+            </div>
+        </div>
 
-        <!-- PREDJELA -->
-        <section class="menu-section">
-            <h2>Predjela & Juhe</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Jelo</th>
-                        <th>Opis</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/goveda-juha.jpg" class="menu-img"></td>
-                        <td>Domaća goveđa juha</td>
-                        <td>S domaćim rezancima i povrćem</td>
-                        <td>5,50 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/carpaccio.jpg" class="menu-img"></td>
-                        <td>Carpaccio od bifteka</td>
-                        <td>Rukola, grana padano, emulzija citrusa</td>
-                        <td>15,50 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/prsut-paski-sir.jpg" class="menu-img"></td>
-                        <td>Paški sir i pršut</td>
-                        <td>Selekcija domaćih narezaka</td>
-                        <td>14,00 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div id="status-loading" hidden style="text-align:center; padding: 40px;">Učitavanje jelovnika...</div>
+        <div id="status-error" hidden style="text-align:center; padding: 40px; color: red;"><p></p></div>
 
-        <!-- ODRESCI -->
-        <section class="menu-section">
-            <h2>Vrhunski Odresci</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Jelo</th>
-                        <th>Gramatura</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/ribeye.jpg" class="menu-img"></td>
-                        <td>Ribeye Steak (Dry-aged)</td>
-                        <td>350g</td>
-                        <td>34,00 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/tbone.jpg" class="menu-img"></td>
-                        <td>T-Bone Steak</td>
-                        <td>500g</td>
-                        <td>42,00 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/filet-mignon.jpg" class="menu-img"></td>
-                        <td>Fillet Mignon</td>
-                        <td>250g</td>
-                        <td>32,00 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <div id="jelovnik-container" class="jelovnik-grid-layout"></div>
+    </div>
 
-        <!-- GLAVNA JELA -->
-        <section class="menu-section">
-            <h2>Glavna Jela</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Jelo</th>
-                        <th>Opis</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/burger.jpg" class="menu-img"></td>
-                        <td>Beef Burger</td>
-                        <td>Domaće pecivo, 100% junetina</td>
-                        <td>14,50 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/janjetina.jpg" class="menu-img"></td>
-                        <td>Janjeći kotleti</td>
-                        <td>S dalmatinskim biljem</td>
-                        <td>26,00 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- SALATE -->
-        <section class="menu-section">
-            <h2>Salate</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Salata</th>
-                        <th>Opis</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/mijesana-salata.jpg" class="menu-img"></td>
-                        <td>Miješana sezonska</td>
-                        <td>Svježe sezonsko povrće</td>
-                        <td>4,50 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/rukola.jpg" class="menu-img"></td>
-                        <td>Rukola s cherry rajčicama</td>
-                        <td>S listićima parmezana</td>
-                        <td>6,00 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/sopska.jpg" class="menu-img"></td>
-                        <td>Šopska salata</td>
-                        <td>Krastavci, rajčica, paprika, feta sir</td>
-                        <td>5,50 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- PRILOZI -->
-        <section class="menu-section">
-            <h2>Prilozi</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Prilog</th>
-                        <th>Opis</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/pomfrit.jpg" class="menu-img"></td>
-                        <td>Domaći krumpirići</td>
-                        <td>Prženi s morskom soli</td>
-                        <td>4,50 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/povrce-zar.jpg" class="menu-img"></td>
-                        <td>Povrće na žaru</td>
-                        <td>Tikvice, paprike, patlidžan</td>
-                        <td>6,00 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/batat.jpg" class="menu-img"></td>
-                        <td>Batat pomfrit</td>
-                        <td>Hrskavi batat s umakom</td>
-                        <td>5,50 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- PIĆA -->
-        <section class="menu-section">
-            <h2>Vinska Karta & Pića</h2>
-            <table class="menu-table">
-                <thead>
-                    <tr>
-                        <th>Slika</th>
-                        <th>Piće</th>
-                        <th>Količina</th>
-                        <th>Cijena</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><img src="../assets/img/vino.jpg" class="menu-img"></td>
-                        <td>Zinfandel (Crno vino)</td>
-                        <td>0.75l</td>
-                        <td>45,00 €</td>
-                    </tr>
-                    <tr>
-                        <td><img src="../assets/img/pivo.jpg" class="menu-img"></td>
-                        <td>Craft pivo (Lokalno)</td>
-                        <td>0.33l</td>
-                        <td>4,50 €</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
+    <div id="view-detail" hidden>
+        <button id="btn-back" class="btn-back">← Natrag na jelovnik</button>
+        <div class="detail-card">
+            <img id="detail-img" src="" alt="">
+            <h2 id="detail-title"></h2>
+            <p id="detail-desc"></p>
+            <div class="detail-price" id="detail-price"></div>
+        </div>
     </div>
 </main>
 
 <footer style="text-align: center; padding: 20px; margin-top: 40px;">
-        <p>© 2026 Beefsteak Zadar. Studij IT, UNIZD.</p>
-        <div class="social-icons" style="margin-top: 10px;">
-            <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px;"><img src="../assets/img/facebook.svg" alt="Facebook" width="24" height="24"></a>
-            <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px;"><img src="../assets/img/instagram.svg" alt="Instagram" width="24" height="24"></a>
-        </div>
-    </footer>
+    <p>© 2026 Beefsteak Zadar. Studij IT, UNIZD.</p>
+    <div class="social-icons" style="margin-top: 10px;">
+        <a href="https://www.facebook.com" target="_blank" style="margin: 0 10px;"><img src="../assets/img/facebook.svg" alt="Facebook" width="24" height="24"></a>
+        <a href="https://www.instagram.com" target="_blank" style="margin: 0 10px;"><img src="../assets/img/instagram.svg" alt="Instagram" width="24" height="24"></a>
+    </div>
+</footer>
+
+<script type="module" src="../js/main.js"></script>
 
 </body>
 </html>

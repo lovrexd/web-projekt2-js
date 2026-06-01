@@ -1,0 +1,130 @@
+export const jelovnikData = [
+  {
+    "id": 1,
+    "category": "predjela",
+    "name": "Domaća goveđa juha",
+    "detail": "S domaćim rezancima i povrćem",
+    "price": "5,50 €",
+    "image": "goveda-juha.jpg"
+  },
+  {
+    "id": 2,
+    "category": "predjela",
+    "name": "Carpaccio od bifteka",
+    "detail": "Rukola, grana padano, emulzija citrusa",
+    "price": "15,50 €",
+    "image": "carpaccio.jpg"
+  },
+  {
+    "id": 3,
+    "category": "predjela",
+    "name": "Paški sir i pršut",
+    "detail": "Selekcija domaćih narezaka",
+    "price": "14,00 €",
+    "image": "prsut-paski-sir.jpg"
+  },
+  {
+    "id": 4,
+    "category": "odresci",
+    "name": "Ribeye Steak (Dry-aged)",
+    "detail": "350g",
+    "price": "34,00 €",
+    "image": "ribeye.jpg"
+  },
+  {
+    "id": 5,
+    "category": "odresci",
+    "name": "T-Bone Steak",
+    "detail": "500g",
+    "price": "42,00 €",
+    "image": "tbone.jpg"
+  },
+  {
+    "id": 6,
+    "category": "odresci",
+    "name": "Fillet Mignon",
+    "detail": "250g",
+    "price": "32,00 €",
+    "image": "filet-mignon.jpg"
+  },
+  {
+    "id": 7,
+    "category": "glavna",
+    "name": "Beef Burger",
+    "detail": "Domaće pecivo, 100% junetina",
+    "price": "14,50 €",
+    "image": "burger.jpg"
+  },
+  {
+    "id": 8,
+    "category": "glavna",
+    "name": "Janjeći kotleti",
+    "detail": "S dalmatinskim biljem",
+    "price": "26,00 €",
+    "image": "janjetina.jpg"
+  },
+  {
+    "id": 9,
+    "category": "salate",
+    "name": "Miješana sezonska",
+    "detail": "Svježe sezonsko povrće",
+    "price": "4,50 €",
+    "image": "mijesana-salata.jpg"
+  },
+  {
+    "id": 10,
+    "category": "salate",
+    "name": "Rukola s cherry rajčicama",
+    "detail": "S listićima parmezana",
+    "price": "6,00 €",
+    "image": "rukola.jpg"
+  },
+  {
+    "id": 11,
+    "category": "salate",
+    "name": "Šopska salata",
+    "detail": "Krastavci, rajčica, paprika, feta sir",
+    "price": "5,50 €",
+    "image": "sopska.jpg"
+  },
+  {
+    "id": 12,
+    "category": "prilozi",
+    "name": "Domaći krumpirići",
+    "detail": "Prženi s morskom soli",
+    "price": "4,50 €",
+    "image": "pomfrit.jpg"
+  },
+  {
+    "id": 13,
+    "category": "prilozi",
+    "name": "Povrće na žaru",
+    "detail": "Tikvice, paprike, patlidžan",
+    "price": "6,00 €",
+    "image": "povrce-zar.jpg"
+  },
+  {
+    "id": 14,
+    "category": "prilozi",
+    "name": "Batat pomfrit",
+    "detail": "Hrskavi batat s umakom",
+    "price": "5,50 €",
+    "image": "batat.jpg"
+  },
+  {
+    "id": 15,
+    "category": "pica",
+    "name": "Zinfandel (Crno vino)",
+    "detail": "0.75l",
+    "price": "45,00 €",
+    "image": "vino.jpg"
+  },
+  {
+    "id": 16,
+    "category": "pica",
+    "name": "Craft pivo (Lokalno)",
+    "detail": "0.33l",
+    "price": "4,50 €",
+    "image": "pivo.jpg"
+  }
+]
