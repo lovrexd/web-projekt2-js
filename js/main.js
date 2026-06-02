@@ -7,7 +7,7 @@ async function loadMenuData() {
   if (getState().loading) return;
   setState({ loading: true, error: null });
   try {
-    // Umjetno kašnjenje od 1 sekunde za efekt učitavanja
+    
     await new Promise(resolve => setTimeout(resolve, 600));
     
     const stavke = await fetchMenu();
