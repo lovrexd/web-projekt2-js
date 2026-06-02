@@ -123,8 +123,12 @@ export function renderMenu() {
   } else {
     const cat = categories.find(c => c.value === filter);
     const catItems = itemsToRender.filter(item => item.category === filter);
-    if (cat && catItems.length > 0) {
-      containerEl.appendChild(createTableSection(cat, catItems));
+    if (cat) {
+      if (catItems.length > 0) {
+        containerEl.appendChild(createTableSection(cat, catItems));
+      } else {
+        containerEl.innerHTML = '<p style="text-align:center; padding: 40px;">Nema rezultata u ovoj kategoriji.</p>';
+      }
     }
   }
 }
