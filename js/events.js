@@ -2,6 +2,13 @@ import { setState, getState } from './state.js';
 import { saveToStorage } from './storage.js';
 
 export function setupEventListeners() {
+  const searchInput = document.querySelector('#search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      setState({ searchQuery: e.target.value, view: 'list', selectedItemId: null });
+    });
+  }
+
   const filterBtns = document.querySelectorAll('.filter-bar button');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -11,7 +18,9 @@ export function setupEventListeners() {
       });
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
-      setState({ filter: btn.dataset.filter, view: 'list', selectedItemId: null });
+      const newFilter = btn.dataset.filter;
+      saveToStorage('lastFilter', newFilter);
+      setState({ filter: newFilter, view: 'list', selectedItemId: null });
     });
   });
 

@@ -90,7 +90,7 @@ export function renderMenu() {
   const containerEl = document.querySelector('#jelovnik-container');
   if (!containerEl) return;
 
-  const { stavke, filter, favorites, loading, error, view } = getState();
+  const { stavke, filter, searchQuery, favorites, loading, error, view } = getState();
 
   if (view !== 'list') return;
   if (loading || error) {
@@ -101,10 +101,22 @@ export function renderMenu() {
   containerEl.replaceChildren();
 
   let itemsToRender = stavke;
+
+  if (searchQuery && searchQuery.trim() !== '') {
+    const query = searchQuery.trim().toLowerCase();
+    itemsToRender = itemsToRender.filter(item => 
+      item.name.toLowerCase().includes(query)
+    );
+  }
+
   if (filter === 'favorites') {
-    itemsToRender = stavke.filter(item => favorites.includes(item.id));
+    itemsToRender = itemsToRender.filter(item => favorites.includes(item.id));
     if (itemsToRender.length === 0) {
-      containerEl.innerHTML = '<p style="text-align:center; padding: 40px;">Nemate još dodanih favorita.</p>';
+      if (searchQuery && searchQuery.trim() !== '') {
+        containerEl.innerHTML = '<p style="text-align:center; padding: 40px;">Nema rezultata pretrage u vašim favoritima.</p>';
+      } else {
+        containerEl.innerHTML = '<p style="text-align:center; padding: 40px;">Nemate još dodanih favorita.</p>';
+      }
       return;
     }
     const favSec = createTableSection({label: 'Vaša Omiljena Jela', nameCol: 'Jelo', detailCol: 'Opis'}, itemsToRender);
@@ -113,13 +125,18 @@ export function renderMenu() {
   }
 
   if (filter === 'all') {
+    let hasItems = false;
     categories.forEach(cat => {
       if (cat.value === 'all' || cat.value === 'favorites') return;
       const catItems = itemsToRender.filter(item => item.category === cat.value);
       if (catItems.length > 0) {
+        hasItems = true;
         containerEl.appendChild(createTableSection(cat, catItems));
       }
     });
+    if (!hasItems) {
+      containerEl.innerHTML = '<p style="text-align:center; padding: 40px;">Nema rezultata pretrage.</p>';
+    }
   } else {
     const cat = categories.find(c => c.value === filter);
     const catItems = itemsToRender.filter(item => item.category === filter);

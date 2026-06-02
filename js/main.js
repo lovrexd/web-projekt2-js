@@ -22,7 +22,19 @@ async function loadMenuData() {
 
 async function init() {
   const savedFavorites = loadFromStorage('favorites', []);
-  setState({ favorites: savedFavorites });
+  const savedFilter = loadFromStorage('lastFilter', 'all');
+  setState({ favorites: savedFavorites, filter: savedFilter });
+  
+  // Set initial active class on filter button
+  const filterBtns = document.querySelectorAll('.filter-bar button');
+  filterBtns.forEach(btn => {
+    if (btn.dataset.filter === savedFilter) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+
   setupEventListeners();
   await loadMenuData();
 }

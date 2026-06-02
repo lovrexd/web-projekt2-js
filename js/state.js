@@ -3,6 +3,7 @@ import { renderMenu, renderStatus, renderView } from './ui.js';
 const state = {
   stavke: [],
   filter: 'all',
+  searchQuery: '',
   favorites: [],
   loading: false,
   error: null,
