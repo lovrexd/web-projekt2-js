@@ -1,6 +1,11 @@
 export async function fetchMenu() {
   try {
-    const response = await fetch('../data/jelovnik.json');
+    // Provjera jesmo li u podmapi 'pages' ili na početnoj 'index.html'
+    const DATA_URL = window.location.pathname.includes('/pages/')
+      ? '../data/jelovnik.json'
+      : 'data/jelovnik.json';
+
+    const response = await fetch(DATA_URL);
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
