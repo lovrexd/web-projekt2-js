@@ -1,6 +1,5 @@
 /* COMPONENTS (Gumbi, forme, kartice, tablice, hero) */
 
-/* Hero sekcija */
 .hero {
     height: 60vh;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../assets/img/hero.jpg') center/cover;
@@ -20,7 +19,7 @@
     text-align: center;
 }
 
-/* Gumbi */
+
 .btn {
     display: inline-block;
     background: var(--primary);
@@ -37,7 +36,7 @@
     background: #e67e22; 
 }
 
-/* Kartice (Cards) */
+
 .card {
     background: var(--gray);
     padding: 20px;
@@ -45,7 +44,7 @@
     border-top: 4px solid var(--primary);
 }
 
-/* Forme */
+
 .form-container {
     background: var(--gray);
     padding: 30px;
@@ -105,7 +104,6 @@ input {
     transition: background 0.2s;
 }
 
-/* Zadnji stupac s cijenom i euri u istome redu */
 .menu-table td:last-child {
     font-weight: bold;
     color: var(--primary);
@@ -119,7 +117,6 @@ input {
     }
 }
 
-/* Jelovnik specific components */
 .menu-img { width: 80px; height: 60px; object-fit: cover; border-radius: 8px; }
 .filter-container { text-align: center; margin: 30px 0; }
 .filter-bar { display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center; }

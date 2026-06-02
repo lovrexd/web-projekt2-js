@@ -7,7 +7,7 @@
     --font-main: 'Segoe UI', sans-serif;
     --transition: 0.3s ease;
 }
-/* Hero sekcija za podstranice */
+
 .hero-small {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/img/hero.jpg') center/cover;
     height: 300px;
@@ -25,7 +25,6 @@
     text-transform: uppercase;
 }
 
-/* Grid layout za "O nama" */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -48,7 +47,6 @@
     text-align: justify;
 }
 
-/* Stilovi za slike i opise */
 .about-figure {
     position: relative;
     border-radius: 15px;

@@ -20,12 +20,10 @@ body {
     margin: 0;
 }
 
-/* Glavni sadržaj zauzima sav preostali prostor i gura footer na dno */
 main {
     flex: 1;
 }
 
-/* Onemogućavanje označavanja teksta */
 .no-select {
     user-select: none;
 }

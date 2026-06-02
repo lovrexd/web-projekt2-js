@@ -1,6 +1,6 @@
 export async function fetchMenu() {
   try {
-    // Provjera jesmo li u podmapi 'pages' ili na početnoj 'index.html'
+    
     const DATA_URL = window.location.pathname.includes('/pages/')
       ? '../data/jelovnik.json'
       : 'data/jelovnik.json';

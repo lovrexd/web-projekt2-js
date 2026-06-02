@@ -35,7 +35,6 @@ function createTableSection(catConfig, items) {
     tr.dataset.id = item.id;
     tr.style.cursor = 'pointer';
 
-    // Slika
     const tdImg = document.createElement('td');
     const img = document.createElement('img');
     img.src = IMG_BASE + item.image;
@@ -43,20 +42,16 @@ function createTableSection(catConfig, items) {
     img.alt = item.name;
     tdImg.appendChild(img);
 
-    // Naziv
     const tdName = document.createElement('td');
     tdName.textContent = item.name;
 
-    // Detalj
     const tdDetail = document.createElement('td');
     tdDetail.textContent = item.detail;
 
-    // Cijena
     const tdPrice = document.createElement('td');
     tdPrice.textContent = item.price;
     tdPrice.style.fontWeight = 'bold';
 
-    // Favorit gumb
     const tdFav = document.createElement('td');
     const favBtn = document.createElement('button');
     favBtn.className = 'btn-fav';

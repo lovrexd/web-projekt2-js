@@ -57,7 +57,7 @@ export function setupEventListeners() {
     });
   }
 
-  // Contact form handling
+
   const contactForm = document.querySelector('.form-container');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
