@@ -1,4 +1,4 @@
-export const jelovnikData = [
+[
   {
     "id": 1,
     "category": "predjela",

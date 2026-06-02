@@ -54,18 +54,27 @@ export function setupEventListeners() {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      const ime = document.getElementById('kontakt-ime').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const poruka = document.getElementById('poruka').value.trim();
+      
       let msgDiv = document.querySelector('#contact-success-msg');
       if (!msgDiv) {
         msgDiv = document.createElement('div');
         msgDiv.id = 'contact-success-msg';
-        msgDiv.style.color = '#4caf50';
         msgDiv.style.marginTop = '15px';
         msgDiv.style.fontWeight = 'bold';
         contactForm.appendChild(msgDiv);
       }
       
-      msgDiv.textContent = 'Poruka je uspješno poslana!';
-      contactForm.reset();
+      if (!ime || !email || !poruka) {
+        msgDiv.style.color = '#d32f2f'; // Crvena boja za grešku
+        msgDiv.textContent = 'Molimo ispunite sva obavezna polja!';
+      } else {
+        msgDiv.style.color = '#4caf50'; // Zelena boja za uspjeh
+        msgDiv.textContent = 'Poruka je uspješno poslana!';
+        contactForm.reset();
+      }
       
       setTimeout(() => {
         msgDiv.textContent = '';

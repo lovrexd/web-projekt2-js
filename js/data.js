@@ -1,8 +1,14 @@
-import { jelovnikData } from '../data/jelovnik.js';
-
 export async function fetchMenu() {
-  // Vraća podatke direktno iz datoteke umjesto da ih fetch-a
-  return jelovnikData;
+  try {
+    const response = await fetch('../data/jelovnik.json');
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching menu:', error);
+    throw error;
+  }
 }
 
 export const categories = [
